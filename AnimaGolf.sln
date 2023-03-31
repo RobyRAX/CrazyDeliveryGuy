@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.UI", "UnityEngi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.TextMeshPro", "Unity.TextMeshPro.csproj", "{14da2fdb-7f67-6c22-40b4-c965188a514d}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{5cf50468-c109-31d7-a1ef-d535d33ab8de}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Notifications.Android", "Unity.Notifications.Android.csproj", "{14f91d4d-c907-113c-e408-508702c85f01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Notifications.iOS", "Unity.Notifications.iOS.csproj", "{5fca5c9a-7ab4-add7-816b-8335a1037ae8}"
@@ -50,6 +52,8 @@ Global
 		{7574c1c3-6a61-cf8b-a178-e343dc88495a}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14da2fdb-7f67-6c22-40b4-c965188a514d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14da2fdb-7f67-6c22-40b4-c965188a514d}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5cf50468-c109-31d7-a1ef-d535d33ab8de}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5cf50468-c109-31d7-a1ef-d535d33ab8de}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14f91d4d-c907-113c-e408-508702c85f01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14f91d4d-c907-113c-e408-508702c85f01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5fca5c9a-7ab4-add7-816b-8335a1037ae8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
