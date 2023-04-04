@@ -37,13 +37,18 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Projectile.cs" />
+     <Compile Include="Assets\Scripts\BallSpawner.cs" />
+     <Compile Include="Assets\Scripts\Cameras\CatViewCameraController.cs" />
      <Compile Include="Assets\Scripts\Cameras\MainCameraController.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\BallController.cs" />
+     <Compile Include="Assets\Scripts\Launcher.cs" />
+     <Compile Include="Assets\Scripts\RandomTarget.cs" />
      <Compile Include="Assets\Scripts\Ball.cs" />
      <Compile Include="Assets\Scripts\Cameras\TopViewCameraController.cs" />
      <Compile Include="Assets\Scripts\BallLauncher.cs" />
      <Compile Include="Assets\Scripts\TargetController.cs" />
-     <Compile Include="Assets\Scripts\Cameras\CatViewCameraController.cs" />
+     <Compile Include="Assets\Scripts\HitZone.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.35f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
