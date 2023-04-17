@@ -7,14 +7,20 @@ public class Launcher : MonoBehaviour
 {
     [Header("Reference")]
 	public Transform target;
+	public Transform hitZone;
 
     [Header("Variable")]
-	[SerializeField] private float h;
+	//[SerializeField] private float h;
+	[SerializeField] Vector3 missOffset;
+	[SerializeField] private float errorPercentage;
+	[SerializeField] float errorRange;
 	public GameObject[] allBalls;
+	
 
     [Header("Parameter")]
+	[SerializeField] float maxErrorRange;
 
-	public float gravity = -18;   
+	public float gravity;   
 
 	[SerializeField] private bool debugPath;
 
@@ -25,11 +31,21 @@ public class Launcher : MonoBehaviour
 
 	void Update() 
     {		
-		allBalls = GameObject.FindGameObjectsWithTag("Ball");
+		allBalls = GameObject.FindGameObjectsWithTag("Package");
+
+		foreach(GameObject ball in allBalls)
+		{
+			if(ball.GetComponent<PackageController>().Hitable)
+			{
+				Launch(ball);
+
+				ball.GetComponent<PackageController>().Hitable = false;
+			}
+		}		
 
 		if (Input.GetKeyDown(KeyCode.Space)) 
         {
-
+			
 		}
 
 		if (debugPath) 
@@ -43,29 +59,34 @@ public class Launcher : MonoBehaviour
 		//CalculateH();
 	}
 
-	void CalculateH()
+	Vector3 CalculateMiss(GameObject ball)
 	{
-		h = target.position.y + 0.5f;
+		errorPercentage = Mathf.Clamp(((ball.transform.position.x - hitZone.transform.position.x) * 100), -100, 100);
+		errorRange = maxErrorRange * errorPercentage/100;
+
+		float randomX = Random.Range(-errorRange, errorRange);
+		float randomY = Mathf.Clamp(Random.Range(-errorRange, errorRange), -5f, maxErrorRange);
+
+		missOffset = new Vector3(randomX, randomY, 0);
+
+		return target.position + missOffset;
 	}
 
-	public void Launch()
-    {	
-		foreach(GameObject ball in allBalls)
-		{
-			if(ball.GetComponent<BallController>().Hitable)
-			{
-				CalculateH();
-				// ball.GetComponent<Rigidbody>().useGravity = true;
-				ball.GetComponent<Rigidbody>().drag = 0;
-				ball.GetComponent<Rigidbody>().velocity = CalculateLaunchData(ball.transform).initialVelocity;
-			}
-		}		
+	public void Launch(GameObject ball)
+    {				
+		CalculateMiss(ball);
+
+		ball.GetComponent<Rigidbody>().drag = 0;
+		ball.GetComponent<Rigidbody>().velocity = CalculateLaunchData(ball.transform, CalculateMiss(ball)).initialVelocity;
+		ball.GetComponent<Rigidbody>().angularVelocity = new Vector3(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
 	}
 
-	LaunchData CalculateLaunchData(Transform ball) 
+	LaunchData CalculateLaunchData(Transform ball, Vector3 target) 
     {
-		float displacementY = target.position.y - ball.position.y;
-		Vector3 displacementXZ = new Vector3 (target.position.x - ball.position.x, 0, target.position.z - ball.position.z);
+		float h = target.y + 1f;
+
+		float displacementY = target.y - ball.position.y;
+		Vector3 displacementXZ = new Vector3 (target.x - ball.position.x, 0, target.z - ball.position.z);
 
 		float time = Mathf.Sqrt(-2*h/gravity) + Mathf.Sqrt(2*(displacementY - h)/gravity);
 
@@ -79,7 +100,7 @@ public class Launcher : MonoBehaviour
     {
 		foreach(GameObject ball in allBalls)
 		{
-			LaunchData launchData = CalculateLaunchData(ball.transform);
+			LaunchData launchData = CalculateLaunchData(ball.transform, CalculateMiss(ball));
 			Vector3 previousDrawPoint = ball.transform.position;
 
 			int resolution = 30;
