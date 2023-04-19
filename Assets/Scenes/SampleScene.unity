@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -248,19 +248,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  isAiming: 0
-  camAnim: {fileID: 963194230}
-  target: {fileID: 515107455}
-  cameras:
-  - {fileID: 963194227}
-  - {fileID: 807755663}
-  - {fileID: 1139093351}
-  launcher: {fileID: 541044134}
-  ball: {fileID: 601614435}
-  timerBeforeShoot: 0.25
-  hToActivateCatCam: 10
-  timerBeforeCamZoom: 1.25
+  playButton: {fileID: 0}
+  stockText: {fileID: 0}
+  goalText: {fileID: 0}
+  WinLoseFX: {fileID: 0}
+  StartFX: {fileID: 0}
+  ResultPanel: {fileID: 0}
+  MenuPanel: {fileID: 0}
+  ParameterPanel: {fileID: 0}
+  gravity: 0
+  capacityGoal: 0
+  maxStock: 0
+  stockPrefab: []
+  delayToResult: 0
+  delayToGameplay: 0
+  gameWin: 0
+  gameSet: 0
+  gameOverFXShown: 0
   currentTimer: 0
+  remainingCapacityGoal: 0
+  remainingStock: 0
+  Stocks: []
 --- !u!4 &310335319
 Transform:
   m_ObjectHideFlags: 0
@@ -518,7 +526,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2035,7 +2043,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
