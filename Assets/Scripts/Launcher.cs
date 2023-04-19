@@ -38,7 +38,10 @@ public class Launcher : MonoBehaviour
 		{
 			if(ball.GetComponent<PackageController>().Hitable)
 			{
+				transform.GetComponentInChildren<Animator>().SetTrigger("Hit");
 				Launch(ball);
+
+				
 
 				ball.GetComponent<PackageController>().Hitable = false;
 			}
