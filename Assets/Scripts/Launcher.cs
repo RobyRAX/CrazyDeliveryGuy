@@ -8,6 +8,7 @@ public class Launcher : MonoBehaviour
     [Header("Reference")]
 	public Transform target;
 	public Transform hitZone;
+	public GameManager gm;
 
     [Header("Variable")]
 	//[SerializeField] private float h;
@@ -20,13 +21,13 @@ public class Launcher : MonoBehaviour
     [Header("Parameter")]
 	[SerializeField] float maxErrorRange;
 
-	public float gravity;   
+	float gravity;   
 
 	[SerializeField] private bool debugPath;
 
 	void Start() 
     {
-		Physics.gravity = Vector3.up * gravity;
+		gravity = gm.gravity;
 	}
 
 	void Update() 

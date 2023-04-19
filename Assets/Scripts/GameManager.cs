@@ -31,11 +31,12 @@ public class GameManager : MonoBehaviour
     public GameObject ResultPanel;
     public GameObject MenuPanel;
     public GameObject ParameterPanel;
-    public GameObject SlideControl;
+    //public GameObject SlideControl;
 
     //---------------------------------------------------------------------
 
-    [Header("Parameter")]  
+    [Header("Parameter")] 
+    public float gravity; 
     public int capacityGoal;
     public int maxStock;
     public GameObject[] stockPrefab;
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-
+        Physics.gravity = Vector3.up * gravity;
     }
 
     void Update()
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour
             gameSet = false;
             MenuPanel.SetActive(true);
             ParameterPanel.SetActive(false);
-            SlideControl.SetActive(false);
+            //SlideControl.SetActive(false);
             ResultPanel.SetActive(false);
             ResultPanel.transform.GetChild(0).gameObject.SetActive(false);
             ResultPanel.transform.GetChild(1).gameObject.SetActive(false);
@@ -112,7 +113,7 @@ public class GameManager : MonoBehaviour
                     currentState = States.GamePlay;
 
                     StartFX.SetActive(false);
-                    SlideControl.SetActive(true);
+                    //SlideControl.SetActive(true);
                 }
                     
             }
@@ -137,7 +138,7 @@ public class GameManager : MonoBehaviour
                 currentTimer = delayToResult;
 
                 ParameterPanel.SetActive(false);
-                SlideControl.SetActive(false);
+                //SlideControl.SetActive(false);
 
                 WinLoseFX.SetActive(true);
                 if(gameWin)

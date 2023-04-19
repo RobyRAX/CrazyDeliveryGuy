@@ -25,13 +25,13 @@ public class Pitcher : MonoBehaviour
 	[SerializeField] Vector2 ballShotDelay;
 	[SerializeField] float phaseDelay;
 
-	public float gravity;   
+	float gravity;   
 
 	[SerializeField] private bool debugPath;
 
 	void Start() 
     {
-		Physics.gravity = Vector3.up * gravity;
+		gravity = gm.gravity;
 
         target = hitPoint.position;
 	}
