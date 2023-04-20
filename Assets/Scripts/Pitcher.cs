@@ -77,6 +77,8 @@ public class Pitcher : MonoBehaviour
 						Launch(ballClone);
             			Destroy(ballClone, 3.25f);
 
+						transform.GetComponentInChildren<Animator>().SetTrigger("Throw");
+
 						gm.RemoveStock(0);
 					}
 					

@@ -12,6 +12,8 @@ public class DetectStockIn : MonoBehaviour
         {
             int stock = col.gameObject.GetComponent<PackageController>().Capacity;
 
+            transform.parent.GetComponent<Animator>().SetTrigger("In");
+
             gm.AddCapacity(stock);
         }
     }
