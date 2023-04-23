@@ -87,7 +87,7 @@ public class Launcher : MonoBehaviour
 
 	LaunchData CalculateLaunchData(Transform ball, Vector3 target) 
     {
-		float h = target.y + 1f;
+		float h = target.y + 0.25f;
 
 		float displacementY = target.y - ball.position.y;
 		Vector3 displacementXZ = new Vector3 (target.x - ball.position.x, 0, target.z - ball.position.z);

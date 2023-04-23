@@ -24,5 +24,15 @@ public class PackageController : MonoBehaviour
         {
             hitable = true;
         }
+
+        
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.name == "Col_End")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -29,7 +29,7 @@ public class CharMovement : MonoBehaviour
 
             if(Physics.Raycast(ray, out RaycastHit hit, float.PositiveInfinity))
             {
-                if(hit.collider.name == "Plane")
+                if(hit.collider.name == "RayCol")
                 {
                     transform.position = new Vector3(hit.point.x + defPos.x, transform.position.y, transform.position.z);
                 }
