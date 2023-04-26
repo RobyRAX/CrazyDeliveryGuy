@@ -102,7 +102,7 @@ public class Pitcher : MonoBehaviour
     {
         float randomX = Random.Range(-maxRange, maxRange);
 
-        return target + new Vector3(randomX, 0, 0);
+        return target + new Vector3(randomX, 0, -0.5f);
     }
 
 	public void Launch(GameObject ball)
@@ -114,7 +114,7 @@ public class Pitcher : MonoBehaviour
 
 	LaunchData CalculateLaunchData(Transform ball, Vector3 target) 
     {
-		float h = target.y + 1f;
+		float h = target.y + 1.25f;
 
 		float displacementY = target.y - ball.position.y;
 		Vector3 displacementXZ = new Vector3 (target.x - ball.position.x, 0, target.z - ball.position.z);

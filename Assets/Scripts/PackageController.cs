@@ -32,7 +32,7 @@ public class PackageController : MonoBehaviour
     {
         if(col.gameObject.name == "Col_End")
         {
-            Destroy(this.gameObject);
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 }

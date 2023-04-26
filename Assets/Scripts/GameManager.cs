@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Physics.gravity = Vector3.up * gravity;
+
+        Time.timeScale = 1f;
     }
 
     void Update()
