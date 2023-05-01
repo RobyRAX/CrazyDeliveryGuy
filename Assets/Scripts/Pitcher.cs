@@ -38,6 +38,11 @@ public class Pitcher : MonoBehaviour
 
 	void Update() 
     {			
+		if(gm.currentState == GameManager.States.GameStart)
+		{
+			transform.GetComponentInChildren<Animator>().SetTrigger("Start");
+		}
+
 		if(gm.currentState == GameManager.States.GamePlay)
 		{
 			ShotSetter();
