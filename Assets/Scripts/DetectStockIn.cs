@@ -7,6 +7,7 @@ using TMPro;
 public class DetectStockIn : MonoBehaviour
 {
     public GameManager gm;
+    public PlayerDataManager playerData;
     public GameObject TextFX;
     // Start is called before the first frame update
     void OnTriggerEnter(Collider col)
@@ -22,6 +23,7 @@ public class DetectStockIn : MonoBehaviour
             Destroy(FX, 0.5f);
 
             gm.AddCapacity(stock);
+            playerData.AddMoney(stock);
         }
     }
 }

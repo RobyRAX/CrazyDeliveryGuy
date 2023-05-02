@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
         Result,
     }
 
+    //
+
     //---------------------------------------------------------------------
 
     [Header("Status")]
@@ -23,7 +25,8 @@ public class GameManager : MonoBehaviour
     //---------------------------------------------------------------------
 
     [Header("Reference")]
-    public Button playButton;
+    //public Button playButton;
+    public PlayerDataManager playerData;
     public TextMeshProUGUI stockText;
     public TextMeshProUGUI goalText;
     public GameObject WinLoseFX;
@@ -125,12 +128,12 @@ public class GameManager : MonoBehaviour
             if(remainingCapacityGoal >= capacityGoal)
             {
                 gameWin = true;
-                currentState = States.GameOver;
+                currentState = States.GameOver;   
             }
             if(Stocks.Count <= 0 && remainingCapacityGoal < capacityGoal && GameObject.FindGameObjectsWithTag("Package").Length == 0)
             {
                 gameWin = false;
-                currentState = States.GameOver;               
+                currentState = States.GameOver;                           
             }
         }
         else if(currentState == States.GameOver)
@@ -148,6 +151,10 @@ public class GameManager : MonoBehaviour
                     WinLoseFX.transform.GetChild(0).gameObject.SetActive(true);
 
                     gameOverFXShown = true;
+
+                    int stockToMoney = (remainingStock/capacityGoal) * remainingStock;
+                    Debug.Log(stockToMoney.ToString());
+                    playerData.AddMoney(stockToMoney);
                 }
                 else
                 {

@@ -25,9 +25,12 @@ public class Pitcher : MonoBehaviour
 	[SerializeField] Vector2 ballShotDelay;
 	[SerializeField] float phaseDelay;
 
-	float gravity;   
-
 	[SerializeField] private bool debugPath;
+
+	float gravity;
+	bool resultPlayed;
+	bool menuPlayed;
+	bool startPlayed;
 
 	void Start() 
     {
@@ -37,15 +40,58 @@ public class Pitcher : MonoBehaviour
 	}
 
 	void Update() 
-    {			
+    {	
+		if(gm.currentState == GameManager.States.Menu)
+		{
+			if(!menuPlayed)
+			{
+				transform.GetComponentInChildren<Animator>().SetTrigger("Menu");
+				menuPlayed = true;
+
+				resultPlayed = false;
+			}
+			
+		}
+
 		if(gm.currentState == GameManager.States.GameStart)
 		{
-			transform.GetComponentInChildren<Animator>().SetTrigger("Start");
+			if(!startPlayed)
+			{
+				transform.GetComponentInChildren<Animator>().SetTrigger("Start");
+
+				startPlayed = true;
+			}
+	
 		}
 
 		if(gm.currentState == GameManager.States.GamePlay)
 		{
 			ShotSetter();
+		}
+
+		if(gm.currentState == GameManager.States.GameOver && gm.gameWin)
+		{
+			if(!resultPlayed)
+			{
+				transform.GetComponentInChildren<Animator>().SetTrigger("Win");
+				resultPlayed = true;
+
+				menuPlayed = false;
+				startPlayed = false;
+			}
+			
+		}
+
+		else if(gm.currentState == GameManager.States.GameOver && !gm.gameWin)
+		{
+			if(!resultPlayed)
+			{
+				transform.GetComponentInChildren<Animator>().SetTrigger("Lose");
+				resultPlayed = true;
+
+				menuPlayed = false;
+				startPlayed = false;
+			}
 		}
 		
 		if (debugPath) 

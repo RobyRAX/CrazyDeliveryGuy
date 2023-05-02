@@ -1,20 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerDataManager : MonoBehaviour
 {
     public int money;
 
-    // Start is called before the first frame update
+    public TextMeshProUGUI moneyUI;
+
     void Start()
     {
-        
+        UpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateUI()
     {
-        
+        moneyUI.text = money.ToString();
+    }
+
+    public void AddMoney(int moneyAdded)
+    {
+        money += moneyAdded;
+
+        UpdateUI();
     }
 }
