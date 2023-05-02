@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     public GameObject ResultPanel;
     public GameObject MenuPanel;
     public GameObject ParameterPanel;
+    public TextMeshProUGUI bonusStockText;
+    public GameObject TextFX;
     //public GameObject SlideControl;
 
     //---------------------------------------------------------------------
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
     public int maxStock;
     public GameObject[] stockPrefab;
     [SerializeField] float delayToResult;
+    [SerializeField] float delayToBonus;
     [SerializeField] float delayToGameplay;
 
     //---------------------------------------------------------------------
@@ -54,8 +57,11 @@ public class GameManager : MonoBehaviour
     public bool gameOverFXShown;
     [SerializeField] private float currentTimer;
     public int remainingCapacityGoal;
+    public int currentStockMax;
     public int remainingStock;
     public List<GameObject> Stocks;
+
+    bool bonusMoneyAdded;
 
     //---------------------------------------------------------------------
     
@@ -70,6 +76,7 @@ public class GameManager : MonoBehaviour
     {
         if(currentState == States.Menu)    //-----------------ViewLevel
         {
+            bonusMoneyAdded = false;
             gameSet = false;
             MenuPanel.SetActive(true);
             ParameterPanel.SetActive(false);
@@ -152,9 +159,6 @@ public class GameManager : MonoBehaviour
 
                     gameOverFXShown = true;
 
-                    int stockToMoney = (remainingStock/capacityGoal) * remainingStock;
-                    Debug.Log(stockToMoney.ToString());
-                    playerData.AddMoney(stockToMoney);
                 }
                 else
                 {
@@ -170,6 +174,8 @@ public class GameManager : MonoBehaviour
                 if(currentTimer <= 0)
                 {
                     currentState = States.Result;
+
+                    currentTimer = delayToBonus;
                 }
             }
         }
@@ -183,6 +189,36 @@ public class GameManager : MonoBehaviour
                 ResultPanel.transform.GetChild(0).gameObject.SetActive(true);
 
                 gameOverFXShown = true;
+
+                if(!bonusMoneyAdded)
+                {
+                    currentTimer -= Time.deltaTime;
+                    bonusStockText.text = " ";
+
+                    if(currentTimer <= delayToBonus/2)
+                    {
+                        bonusStockText.text = remainingStock + " / " + currentStockMax;
+                    }
+                    
+                    if(currentTimer <= 0)
+                    {
+
+                        float stockToMoney = (maxStock/(float)capacityGoal) * remainingStock;
+                        Debug.Log((maxStock/(float)capacityGoal).ToString());
+                        playerData.AddMoney(stockToMoney);
+
+                        GameObject FX = Instantiate(TextFX, Vector3.zero, Quaternion.identity, GameObject.Find("Canvas").transform);
+                        FX.GetComponentInChildren<TextMeshProUGUI>().text = "+" + stockToMoney.ToString("F0");
+                        FX.transform.position = bonusStockText.gameObject.transform.position + new Vector3(200, 150, 0);
+                        FX.GetComponentInChildren<TextMeshProUGUI>().fontSize = 200;
+                        Destroy(FX, 2f);
+
+                        bonusMoneyAdded = true;
+                    }
+
+                    
+                }
+                
             }
             else
             {
@@ -218,7 +254,8 @@ public class GameManager : MonoBehaviour
 
             remainingStock += stock.GetComponent<PackageController>().Capacity;
         }
-
+        
+        currentStockMax = remainingStock;
         UpdateStockGoalUI();
     }
 
