@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public GameObject ResultPanel;
     public GameObject MenuPanel;
     public GameObject ParameterPanel;
-    public TextMeshProUGUI bonusStockText;
+    public GameObject bonusText;
     public GameObject TextFX;
     //public GameObject SlideControl;
 
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public float gravity; 
     public int capacityGoal;
     public int maxStock;
+    public int maxBonusPerStock;
     public GameObject[] stockPrefab;
     [SerializeField] float delayToResult;
     [SerializeField] float delayToBonus;
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Stocks;
 
     bool bonusMoneyAdded;
+    GameObject FX;
 
     //---------------------------------------------------------------------
     
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour
     {
         if(currentState == States.Menu)    //-----------------ViewLevel
         {
+            Destroy(FX);
             bonusMoneyAdded = false;
             gameSet = false;
             MenuPanel.SetActive(true);
@@ -191,32 +194,47 @@ public class GameManager : MonoBehaviour
                 gameOverFXShown = true;
 
                 if(!bonusMoneyAdded)
-                {
+                {                   
                     currentTimer -= Time.deltaTime;
-                    bonusStockText.text = " ";
+                    bonusText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"(100 - ({maxStock} - {capacityGoal}))";
+                    bonusText.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = $"x  {remainingStock}";
+
+                    foreach(Transform child in bonusText.transform.GetComponentInChildren<Transform>())
+                    {
+                        child.gameObject.SetActive(false);
+                    }
 
                     if(currentTimer <= delayToBonus/2)
                     {
-                        bonusStockText.text = remainingStock + " / " + currentStockMax;
+                        bonusText.transform.GetChild(0).gameObject.SetActive(true);
+                    }
+                    if(currentTimer <= delayToBonus/2 - 0.25f)
+                    {
+                        bonusText.transform.GetChild(2).gameObject.SetActive(true);
+                    }
+                    if(currentTimer <= delayToBonus/2 - 0.5f)
+                    {
+                        bonusText.transform.GetChild(3).gameObject.SetActive(true);
+                    }
+                    if(currentTimer <= delayToBonus/2 - 0.75f)
+                    {
+                        bonusText.transform.GetChild(1).gameObject.SetActive(true);
                     }
                     
                     if(currentTimer <= 0)
                     {
 
-                        float stockToMoney = (maxStock/(float)capacityGoal) * remainingStock;
-                        Debug.Log((maxStock/(float)capacityGoal).ToString());
-                        playerData.AddMoney(stockToMoney);
+                        float stockToMoney = (maxBonusPerStock - (maxStock - capacityGoal)) / 10f * remainingStock;
+                        Debug.Log(stockToMoney);
+                        playerData.AddMoney((int)stockToMoney);
 
-                        GameObject FX = Instantiate(TextFX, Vector3.zero, Quaternion.identity, GameObject.Find("Canvas").transform);
+                        FX = Instantiate(TextFX, Vector3.zero, Quaternion.identity, GameObject.Find("Canvas").transform);
                         FX.GetComponentInChildren<TextMeshProUGUI>().text = "+" + stockToMoney.ToString("F0");
-                        FX.transform.position = bonusStockText.gameObject.transform.position + new Vector3(200, 150, 0);
+                        FX.transform.position = bonusText.gameObject.transform.parent.position + new Vector3(315, 150, 0);
                         FX.GetComponentInChildren<TextMeshProUGUI>().fontSize = 200;
-                        Destroy(FX, 2f);
 
                         bonusMoneyAdded = true;
-                    }
-
-                    
+                    }     
                 }
                 
             }

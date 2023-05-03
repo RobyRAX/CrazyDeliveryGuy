@@ -14,7 +14,7 @@ public class Pitcher : MonoBehaviour
     GameObject ballClone;
 	[SerializeField] int ballShotRemaining;
 	[SerializeField] float ballShotDelayTimer;
-	[SerializeField] float _ballShotDelayTimer;
+	[SerializeField] float currentShotDelayTimer;
 	//[SerializeField] float phaseDelayTimer;
 	[SerializeField] float _phaseDelayTimer;
 	[SerializeField] bool shootAble;
@@ -43,6 +43,11 @@ public class Pitcher : MonoBehaviour
     {	
 		if(gm.currentState == GameManager.States.Menu)
 		{
+			ballShotRemaining = 0;
+			ballShotDelayTimer = 0;
+			currentShotDelayTimer = 0;
+			_phaseDelayTimer = 0;
+
 			if(!menuPlayed)
 			{
 				transform.GetComponentInChildren<Animator>().SetTrigger("Menu");
@@ -114,9 +119,9 @@ public class Pitcher : MonoBehaviour
 		}
 		else if(shootAble)
 		{
-			_ballShotDelayTimer -= Time.deltaTime;
+			currentShotDelayTimer -= Time.deltaTime;
 
-			if(_ballShotDelayTimer <= 0)
+			if(currentShotDelayTimer <= 0)
 			{
 				if(ballShotRemaining > 0)
 				{
@@ -133,14 +138,14 @@ public class Pitcher : MonoBehaviour
 						gm.RemoveStock(0);
 					}
 					
-					_ballShotDelayTimer = ballShotDelayTimer;
+					currentShotDelayTimer = ballShotDelayTimer;
 				}	
 				if(ballShotRemaining <= 0)
 				{
 					ballShotRemaining = Random.Range(Mathf.FloorToInt(minMaxBallShot.x), Mathf.FloorToInt(minMaxBallShot.y));
 					ballShotDelayTimer = Random.Range(ballShotDelay.x, ballShotDelay.y);
 
-					_ballShotDelayTimer = ballShotDelayTimer;
+					currentShotDelayTimer = ballShotDelayTimer;
 
 					_phaseDelayTimer = phaseDelay;
 					shootAble = false;
