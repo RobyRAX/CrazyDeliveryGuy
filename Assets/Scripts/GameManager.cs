@@ -240,7 +240,18 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                currentTimer -= Time.deltaTime;
                 ResultPanel.transform.GetChild(1).gameObject.SetActive(true);
+
+                foreach(Transform child in bonusText.transform.GetComponentInChildren<Transform>())
+                {
+                    child.gameObject.SetActive(false);
+                }
+
+                if(currentTimer <= delayToBonus/2)
+                {
+                    bonusText.transform.GetChild(4).gameObject.SetActive(true);
+                }
 
                 gameOverFXShown = true;
             }
