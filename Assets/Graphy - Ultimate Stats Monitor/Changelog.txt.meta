@@ -1,13 +1,3 @@
-fileFormatVersion: 2
-guid: 425066d07b7c1204887be96c53348ac6
-labels:
-- counter
-- fps
-- graphy
-- tayx
-timeCreated: 1515072754
-licenseType: Store
-TextScriptImporter:
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:943cef133864fb9b3558304db8cea12a997581ff931fdfa14856b8ce43bbebde
+size 232

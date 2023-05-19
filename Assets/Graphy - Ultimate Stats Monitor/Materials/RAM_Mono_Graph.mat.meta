@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: cb5c252f19f1cd2448f88d7f9dd989e8
-labels:
-- counter
-- graph
-- material
-- memory
-- monitor
-- ram
-- shader
-timeCreated: 1513614711
-licenseType: Store
-NativeFormatImporter:
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:0dc8e668c0ccaf37a941884e1ba825322a46c5359b4fe907f23499c9eacb1292
+size 268

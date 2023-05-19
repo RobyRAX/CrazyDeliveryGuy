@@ -1,14 +1,3 @@
-fileFormatVersion: 2
-guid: d78a1478d4edf8a4f894e39e18c9e58d
-labels:
-- Counter
-- Fps
-- Graph
-- Graphy
-- Tayx
-timeCreated: 1518800331
-licenseType: Store
-DefaultImporter:
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:9594fcb8b076888368b59f8106261ecdfc992c8c59f4f4eb8770fc0a5e06160c
+size 238

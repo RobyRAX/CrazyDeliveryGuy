@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: a65c67e8efa392e4faaf526ab060ac88
-labels:
-- audio
-- graph
-- material
-- shader
-- spectrometer
-- spectrum
-timeCreated: 1513179885
-licenseType: Store
-NativeFormatImporter:
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:729ad8003572c62dbf9da2b9c93f1133a21a8263e0914337cf472feb9079129b
+size 266

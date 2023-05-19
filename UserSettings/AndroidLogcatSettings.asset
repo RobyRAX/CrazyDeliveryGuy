@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "810e9c42",
         "name": "com.RAXYDev.CrazyDeliveryGuy",
-        "processId": 23966,
+        "processId": 25586,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -84,6 +84,12 @@
             "deviceId": "810e9c42",
             "name": "com.RAXYDev.CrazyDeliveryGuy",
             "processId": 23966,
+            "exited": false
+        },
+        {
+            "deviceId": "810e9c42",
+            "name": "com.RAXYDev.CrazyDeliveryGuy",
+            "processId": 25586,
             "exited": false
         }
     ],

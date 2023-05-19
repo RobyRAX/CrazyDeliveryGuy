@@ -1,10 +1,3 @@
-fileFormatVersion: 2
-guid: 663039f397abaa648854c3b8ef8f4256
-labels:
-- gui
-timeCreated: 1513980352
-licenseType: Store
-NativeFormatImporter:
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:9ed0a6378b3f0685a1abde4d3d93f5a514d013aab09c7b75b32c2201723b6cf1
+size 205
