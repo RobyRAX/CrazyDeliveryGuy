@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifiedAssetPathList:
   - Assets/Bakery/examples/content/sponza/sponza.FBX
-  modifiedAssetPaddingHash: d6a958ff
+  - Assets/3D/Vegetation/Gedung_1.fbx
+  - Assets/3D/Vegetation/Kantor.fbx
+  - Assets/3D/Vegetation/Pohon_1.fbx
+  - Assets/3D/Vegetation/Warunk.fbx
+  modifiedAssetPaddingHash: d6a958ff363fd3d9363fd3d9333fd3d9393fd3d9
