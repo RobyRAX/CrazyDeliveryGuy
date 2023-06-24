@@ -427,7 +427,13 @@ MonoBehaviour:
   - Assets/3D/Package/Soccer.fbx
   - Assets/3D/Char/Bat.fbx
   - Assets/3D/Package/Cardboard.fbx
-  uvOverlapAssetList: 000000000000000000000000000000000000000001010000000000000000000000000000
+  - Assets/Miku_Bake.fbx
+  - Assets/3D/Test_ShapeKey.fbx
+  - Assets/3D/Miku_Bake1000.fbx
+  - Assets/3D/Miku_Bake.fbx
+  - Assets/3D/Test_COK.fbx
+  - Assets/Bake_KeSekian_1000Frame.fbx
+  uvOverlapAssetList: 000000000000000000000000000000000000000001010000000000000000000000000000000000000000000000000000000000000000000000000000
   xatlasWarningShown: 0
   foundCompatibleSetup: 1
   gpuName: NVIDIA GeForce RTX 3070 Laptop GPU
@@ -470,7 +476,7 @@ MonoBehaviour:
   renderSettingsSkipOutOfBoundsUVs: 1
   renderSettingsHackEmissiveBoost: 1
   renderSettingsHackIndirectBoost: 1
-  renderSettingsTempPath: D:/BackertTemp/GameJam
+  renderSettingsTempPath: D:/My Docs/.RAXY/RAXY Dev/GameSeed/CrazyDeliveryGuy
   renderSettingsOutPath: 
   renderSettingsUseScenePath: 0
   renderSettingsHackAOIntensity: 0

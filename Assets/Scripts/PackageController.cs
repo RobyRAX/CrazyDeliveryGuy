@@ -23,6 +23,8 @@ public class PackageController : MonoBehaviour
         if(col.gameObject.tag == "HitZone")
         {
             hitable = true;
+
+            GetComponent<AudioSource>().Play(0);
         }
 
         

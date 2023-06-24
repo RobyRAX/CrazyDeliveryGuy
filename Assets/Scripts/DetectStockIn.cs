@@ -14,6 +14,7 @@ public class DetectStockIn : MonoBehaviour
     {
         if(col.gameObject.tag == "Package")
         {
+            GetComponent<AudioSource>().Play();
             int stock = col.gameObject.GetComponent<PackageController>().Capacity;
 
             transform.parent.GetComponent<Animator>().SetTrigger("In");

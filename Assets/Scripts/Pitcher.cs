@@ -129,6 +129,8 @@ public class Pitcher : MonoBehaviour
 
 					if(gm.Stocks.Count > 0)
 					{
+						GetComponent<AudioSource>().Play();
+
 						ballClone = Instantiate(gm.Stocks[0], spawner.position, Quaternion.identity);
 						Launch(ballClone);
             			Destroy(ballClone, 3.25f);

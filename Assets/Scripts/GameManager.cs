@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public GameObject ParameterPanel;
     public GameObject bonusText;
     public GameObject TextFX;
+    public GameObject RestartButton;
     //public GameObject SlideControl;
 
     //---------------------------------------------------------------------
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
             ResultPanel.SetActive(false);
             ResultPanel.transform.GetChild(0).gameObject.SetActive(false);
             ResultPanel.transform.GetChild(1).gameObject.SetActive(false);
+            RestartButton.SetActive(false);
 
             if(Input.GetKeyDown(KeyCode.Space))
             {
@@ -137,11 +139,15 @@ public class GameManager : MonoBehaviour
         {
             if(remainingCapacityGoal >= capacityGoal)
             {
-                gameWin = true;
+                GetComponent<SoundController>().PlayCheer();
+
+                gameWin = true;                
                 currentState = States.GameOver;   
             }
             if(Stocks.Count <= 0 && remainingCapacityGoal < capacityGoal && GameObject.FindGameObjectsWithTag("Package").Length == 0)
             {
+                GetComponent<SoundController>().PlayBoo();
+
                 gameWin = false;
                 currentState = States.GameOver;                           
             }
@@ -189,6 +195,7 @@ public class GameManager : MonoBehaviour
             ResultPanel.SetActive(true);
             if(gameWin)
             { 
+                //GetComponent<SoundController>().PlayCheer();
                 ResultPanel.transform.GetChild(0).gameObject.SetActive(true);
 
                 gameOverFXShown = true;
@@ -223,6 +230,7 @@ public class GameManager : MonoBehaviour
                     
                     if(currentTimer <= 0)
                     {
+                        RestartButton.SetActive(true);
 
                         float stockToMoney = (maxBonusPerStock - (maxStock - capacityGoal)) / 10f * remainingStock;
                         Debug.Log(stockToMoney);
@@ -250,6 +258,8 @@ public class GameManager : MonoBehaviour
 
                 if(currentTimer <= delayToBonus/2)
                 {
+                    RestartButton.SetActive(true);
+
                     bonusText.transform.GetChild(4).gameObject.SetActive(true);
                 }
 

@@ -93,3 +93,19 @@ Tiles: 2
 Loading shader denoisePrepareOIDN.ptx::oxMain...
 Loading shader denoiseFinishOIDN.ptx::oxMain...
 Done
+2023-6-4
+Init...
+Error (-1): Unknown error
+
+2023-6-4
+Init...
+Error (1546): Failed to load OptiX library
+
+2023-6-4
+Init...
+CUDA error (30): unknown error
+
+2023-6-4
+Init...
+Error (1546): Failed to load OptiX library
+
