@@ -8,6 +8,12 @@ TagManager:
   - HitZone
   - Package
   - Col_End
+  - Envi
+  - Vehicle
+  - VehicleSkinBtn
+  - StickParent
+  - Stick
+  - StickSkinBtn
   layers:
   - Default
   - TransparentFX
@@ -15,7 +21,7 @@ TagManager:
   - OnWorldUI
   - Water
   - UI
-  - Chara
+  - CastShadow
   - 
   - 
   - 

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f904db42098fc564fb3769b88da57fb2, type: 3}
+  m_Name: StickDatabase
+  m_EditorClassIdentifier: 
+  stickSkins:
+  - name: Normal Bat
+    skinObj: {fileID: 1491161566103703237, guid: 6193190b3b6e71a4aa5a0ab90326b280,
+      type: 3}
+    skinImg: {fileID: 0}
+    unlocked: 1
+  - name: Spike Bat
+    skinObj: {fileID: 1627393339353183576, guid: 26d0fb4e16e5826439580ecdfeb3391c,
+      type: 3}
+    skinImg: {fileID: 0}
+    unlocked: 1

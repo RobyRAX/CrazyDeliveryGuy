@@ -21,9 +21,9 @@ public class Pitcher : MonoBehaviour
 
     [Header("Parameter")]
 	[SerializeField] float maxRange;
-	[SerializeField] Vector2 minMaxBallShot;
-	[SerializeField] Vector2 ballShotDelay;
-	[SerializeField] float phaseDelay;
+	public Vector2 minMaxBallShot;
+	public Vector2 ballShotDelay;
+	public float phaseDelay;
 
 	[SerializeField] private bool debugPath;
 

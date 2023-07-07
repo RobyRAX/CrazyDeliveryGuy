@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CharMovement : MonoBehaviour
 {
+    public GameManager gm;
     public Slider slideMovement;
     Camera cam;
 
@@ -31,7 +32,10 @@ public class CharMovement : MonoBehaviour
             {
                 if(hit.collider.name == "RayCol")
                 {
-                    transform.position = new Vector3(hit.point.x + defPos.x, transform.position.y, transform.position.z);
+                    if(gm.currentState != GameManager.States.Menu && gm.currentState != GameManager.States.Result)
+                    {
+                        transform.position = new Vector3(hit.point.x + defPos.x, transform.position.y, transform.position.z);
+                    }
                 }
             }
         }

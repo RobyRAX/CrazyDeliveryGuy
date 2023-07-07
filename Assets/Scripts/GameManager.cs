@@ -17,15 +17,16 @@ public class GameManager : MonoBehaviour
 
     //
 
-    //---------------------------------------------------------------------
+//---------------------------------------------------------------------
 
     [Header("Status")]
     public States currentState;
 
-    //---------------------------------------------------------------------
+//---------------------------------------------------------------------
 
     [Header("Reference")]
     //public Button playButton;
+    public LevelManager levelMan;
     public PlayerDataManager playerData;
     public TextMeshProUGUI stockText;
     public TextMeshProUGUI goalText;
@@ -34,14 +35,17 @@ public class GameManager : MonoBehaviour
     public GameObject ResultPanel;
     public GameObject MenuPanel;
     public GameObject ParameterPanel;
+    public GameObject LevelPanel;
     public GameObject bonusText;
     public GameObject TextFX;
     public GameObject RestartButton;
     //public GameObject SlideControl;
 
-    //---------------------------------------------------------------------
+//---------------------------------------------------------------------
 
-    [Header("Parameter")] 
+//---------------------------------------------------------------------
+
+    [Header("Parameter - Editable Input")] 
     public float gravity; 
     public int capacityGoal;
     public int maxStock;
@@ -51,12 +55,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] float delayToBonus;
     [SerializeField] float delayToGameplay;
 
-    //---------------------------------------------------------------------
+//---------------------------------------------------------------------
 
-    [Header("Variable")]
-    public bool gameWin;
-    public bool gameSet;
-    public bool gameOverFXShown;
+    [Header("Variable - No Need to Edit")]
+    [HideInInspector] public bool gameWin;
+    [HideInInspector] public bool gameSet;
+    [HideInInspector] public bool gameOverFXShown;
     [SerializeField] private float currentTimer;
     public int remainingCapacityGoal;
     public int currentStockMax;
@@ -64,9 +68,10 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Stocks;
 
     bool bonusMoneyAdded;
+    bool menuInitiated;
     GameObject FX;
 
-    //---------------------------------------------------------------------
+//---------------------------------------------------------------------
     
     void Start()
     {
@@ -79,21 +84,30 @@ public class GameManager : MonoBehaviour
     {
         if(currentState == States.Menu)    //-----------------ViewLevel
         {
-            Destroy(FX);
-            bonusMoneyAdded = false;
-            gameSet = false;
-            MenuPanel.SetActive(true);
-            ParameterPanel.SetActive(false);
-            //SlideControl.SetActive(false);
-            ResultPanel.SetActive(false);
-            ResultPanel.transform.GetChild(0).gameObject.SetActive(false);
-            ResultPanel.transform.GetChild(1).gameObject.SetActive(false);
-            RestartButton.SetActive(false);
-
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(!menuInitiated)
             {
-                currentState = States.GameStart;
+                levelMan.UpdateData();
+                levelMan.UpdateEnvironment();
+                // levelMan.UpdateUI();
+
+                Destroy(FX);
+                bonusMoneyAdded = false;
+                gameSet = false;
+                MenuPanel.SetActive(true);
+                ParameterPanel.SetActive(false);
+                LevelPanel.SetActive(false);
+                //SlideControl.SetActive(false);
+                ResultPanel.SetActive(false);
+                ResultPanel.transform.GetChild(0).gameObject.SetActive(false);
+                ResultPanel.transform.GetChild(1).gameObject.SetActive(false);
+                RestartButton.SetActive(false);
+
+                menuInitiated = true;
             }
+            // if(Input.GetKeyDown(KeyCode.Space))
+            // {
+            //     currentState = States.GameStart;
+            // }
 
             //Change State --> via Button
         }
@@ -109,6 +123,7 @@ public class GameManager : MonoBehaviour
                 WinLoseFX.transform.GetChild(1).gameObject.SetActive(false);
                 MenuPanel.SetActive(false);
                 ParameterPanel.SetActive(true);
+                LevelPanel.SetActive(true);
 
                 currentTimer = delayToGameplay;
 
@@ -162,14 +177,16 @@ public class GameManager : MonoBehaviour
                 //SlideControl.SetActive(false);
 
                 WinLoseFX.SetActive(true);
-                if(gameWin)
-                { 
+                if(gameWin) //-------------------------------------------------------------- WIN
+                {                   
+                    levelMan.UnlockLevel();
+                    levelMan.LevelCounter();
+
                     WinLoseFX.transform.GetChild(0).gameObject.SetActive(true);
 
                     gameOverFXShown = true;
-
                 }
-                else
+                else        //-------------------------------------------------------------- LOSE
                 {
                     WinLoseFX.transform.GetChild(1).gameObject.SetActive(true);
 
@@ -191,9 +208,10 @@ public class GameManager : MonoBehaviour
         else if(currentState == States.Result)
         {
             WinLoseFX.SetActive(false);
+            LevelPanel.SetActive(false);
 
             ResultPanel.SetActive(true);
-            if(gameWin)
+            if(gameWin)     //-------------------------------------------------------------- WIN
             { 
                 //GetComponent<SoundController>().PlayCheer();
                 ResultPanel.transform.GetChild(0).gameObject.SetActive(true);
@@ -246,7 +264,7 @@ public class GameManager : MonoBehaviour
                 }
                 
             }
-            else
+            else            //-------------------------------------------------------------- LOSE
             {
                 currentTimer -= Time.deltaTime;
                 ResultPanel.transform.GetChild(1).gameObject.SetActive(true);
@@ -276,6 +294,8 @@ public class GameManager : MonoBehaviour
     public void RestartState()
     {
         currentState = States.Menu;
+
+        menuInitiated = false;
     }
 
     public void GameStartState()
