@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28207a082004274b977b9eea8c4aa8c, type: 3}
+  m_Name: CharDatabase
+  m_EditorClassIdentifier: 
+  charSkins:
+  - name: Normal
+    skinObj: {fileID: 6691590363851150358, guid: a18f668f91ca5284a8dde1eae9e94b9a,
+      type: 3}
+    unlocked: 1
+  - name: Normal_2
+    skinObj: {fileID: 308154678852765778, guid: 938dda299db1f354fb3b06b9e17b187f,
+      type: 3}
+    unlocked: 1

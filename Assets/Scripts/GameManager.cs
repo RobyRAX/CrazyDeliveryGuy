@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [Header("Reference")]
     //public Button playButton;
     public LevelManager levelMan;
+    public FirebaseLevelTrack levelTrack;
     public PlayerDataManager playerData;
     public TextMeshProUGUI stockText;
     public TextMeshProUGUI goalText;
@@ -34,8 +35,10 @@ public class GameManager : MonoBehaviour
     public GameObject StartFX;
     public GameObject ResultPanel;
     public GameObject MenuPanel;
+    public GameObject HitZone;
     public GameObject ParameterPanel;
     public GameObject LevelPanel;
+    public GameObject SkinPanel;
     public GameObject bonusText;
     public GameObject TextFX;
     public GameObject RestartButton;
@@ -96,11 +99,14 @@ public class GameManager : MonoBehaviour
                 MenuPanel.SetActive(true);
                 ParameterPanel.SetActive(false);
                 LevelPanel.SetActive(false);
+                SkinPanel.SetActive(false);
                 //SlideControl.SetActive(false);
                 ResultPanel.SetActive(false);
                 ResultPanel.transform.GetChild(0).gameObject.SetActive(false);
                 ResultPanel.transform.GetChild(1).gameObject.SetActive(false);
                 RestartButton.SetActive(false);
+
+                HitZone.SetActive(false);
 
                 menuInitiated = true;
             }
@@ -124,6 +130,7 @@ public class GameManager : MonoBehaviour
                 MenuPanel.SetActive(false);
                 ParameterPanel.SetActive(true);
                 LevelPanel.SetActive(true);
+                HitZone.SetActive(true);
 
                 currentTimer = delayToGameplay;
 
@@ -178,7 +185,9 @@ public class GameManager : MonoBehaviour
 
                 WinLoseFX.SetActive(true);
                 if(gameWin) //-------------------------------------------------------------- WIN
-                {                   
+                {            
+                    //levelTrack.LogEventLevel();
+
                     levelMan.UnlockLevel();
                     levelMan.LevelCounter();
 
@@ -188,6 +197,8 @@ public class GameManager : MonoBehaviour
                 }
                 else        //-------------------------------------------------------------- LOSE
                 {
+                    //levelTrack.LogEventLevel();
+
                     WinLoseFX.transform.GetChild(1).gameObject.SetActive(true);
 
                     gameOverFXShown = true;

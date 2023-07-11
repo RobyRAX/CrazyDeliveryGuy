@@ -17,28 +17,42 @@ public class StickSkinController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        parent = GameObject.FindGameObjectWithTag("StickParent").transform;
-
         SpawnSkinSelection();
-        UpdateSkin(selectedSkin);
+        //UpdateSkin(selectedSkin);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            UpdateSkin(selectedSkin);
-        }
+        // if(Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     UpdateSkin(selectedSkin);
+        // }
+    }
+
+    public IEnumerator UpdateSkinCo(int inputSelectedDB)
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Stick"));
+
+        StickSkin stickSkin = stickDB.GetStickSkin(inputSelectedDB);
+        parent = GameObject.FindGameObjectWithTag("StickParent").transform;
+        GameObject skin = Instantiate(stickSkin.skinObj, parent);
+
+        Debug.Log("Stick Updated - " + skin.name);
+
+        yield return null;
     }
 
     public void UpdateSkin(int inputSelectedDB)
     {
         Destroy(GameObject.FindGameObjectWithTag("Stick"));
+        parent = GameObject.FindGameObjectWithTag("StickParent").transform;
 
         StickSkin stickSkin = stickDB.GetStickSkin(inputSelectedDB);
+        GameObject skin = Instantiate(stickSkin.skinObj, parent);
+        
 
-        Instantiate(stickSkin.skinObj, parent);
+        Debug.Log("Stick Updated - " + skin.name);
     }
 
     public void SpawnSkinSelection()

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "194509008001",
+    "project_id": "crazy-delivery-guy",
+    "storage_bucket": "crazy-delivery-guy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194509008001:android:f1d08965275702a6117180",
+        "android_client_info": {
+          "package_name": "com.RAXYDev.CrazyDeliveryGuy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194509008001-orddt4om2mv1rb2d1l165ktuk5l89ptn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMEnFQpqkHFhATs4bA4ACcpynAuRmbqXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194509008001-orddt4om2mv1rb2d1l165ktuk5l89ptn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

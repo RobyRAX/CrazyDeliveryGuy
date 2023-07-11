@@ -24,4 +24,4 @@ MonoBehaviour:
       type: 3}
     skinImg: {fileID: 0}
     colliderPos: {x: 0, y: 2.6, z: 0}
-    unlocked: 0
+    unlocked: 1

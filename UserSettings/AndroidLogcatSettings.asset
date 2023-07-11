@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "810e9c42",
+    "m_SelectedDeviceId": "HU9LAIZ9Q4YDTG7X",
     "m_SelectedPackage": {
-        "deviceId": "810e9c42",
-        "name": "com.RAXYDev.CrazyDeliveryGuy",
-        "processId": 8883,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -103,6 +103,36 @@
             "name": "com.RAXYDev.CrazyDeliveryGuy",
             "processId": 8883,
             "exited": false
+        },
+        {
+            "deviceId": "HU9LAIZ9Q4YDTG7X",
+            "name": "com.oppo.launcher",
+            "processId": 2542,
+            "exited": false
+        },
+        {
+            "deviceId": "HU9LAIZ9Q4YDTG7X",
+            "name": "com.RAXYDev.CrazyDeliveryGuy",
+            "processId": 14391,
+            "exited": true
+        },
+        {
+            "deviceId": "HU9LAIZ9Q4YDTG7X",
+            "name": "com.RAXYDev.CrazyDeliveryGuy",
+            "processId": 17931,
+            "exited": true
+        },
+        {
+            "deviceId": "HU9LAIZ9Q4YDTG7X",
+            "name": "com.RAXYDev.CrazyDeliveryGuy",
+            "processId": 7291,
+            "exited": true
+        },
+        {
+            "deviceId": "HU9LAIZ9Q4YDTG7X",
+            "name": "com.RAXYDev.CrazyDeliveryGuy",
+            "processId": 15802,
+            "exited": true
         }
     ],
     "m_Tags": {
@@ -158,7 +188,7 @@
     "m_FilterOptions": {
         "m_Filter": "",
         "m_UseRegularExpressions": false,
-        "m_MatchCase": false
+        "m_MatchCase": true
     },
     "m_SymbolPaths": [],
     "m_CaptureVideoSettings": {
